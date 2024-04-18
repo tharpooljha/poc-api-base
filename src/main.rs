@@ -19,10 +19,13 @@ async fn provider(
 async fn main() {
 	let app = Router::new()
 		.route(
-			"/api/sanctions/:api_version/:uuid/screening",
+			"/api/poc-api-base/:api_version/:uuid/screening",
 			get(screening),
 		)
-		.route("/api/sanctions/:api_version/:uuid/provider", get(provider));
+		.route(
+			"/api/poc-api-base/:api_version/:uuid/provider",
+			get(provider),
+		);
 
 	let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
 	println!("Server listening on {}", addr);
