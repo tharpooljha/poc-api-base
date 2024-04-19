@@ -20,7 +20,7 @@ async fn provider(
 
 async fn index() -> Html<&'static str> {
 	Html(
-		"<h1>poc-api-base!</h1> \n <p>API for POC</p>\n   <p>Version 0.1.0</p>\n
+		"<h1>poc-api-base!</h1> \n <p>API for POC</p>\n   <p>Version 0.2.0</p>\n
 	<p>Test:</p>\n  <p><a href='/api/poc-api-base/v1/4e3cde86-37ea-48bb-adef-4f820ba70b0f/screening'>Test</p>\n",
 	)
 }
@@ -48,7 +48,8 @@ async fn main() {
 			"/api/poc-api-base/:api_version/:uuid/provider",
 			get(provider),
 		)
-		.route("/health", get(health_check_handler));
+		.route("/health/liveness", get(health_check_handler))
+		.route("/health/readiness", get(health_check_handler));
 
 	let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 	println!("Server listening on {}", addr);
