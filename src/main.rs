@@ -45,7 +45,7 @@ async fn main() {
 			get(screening),
 		)
 		.route(
-			"/api/poc-api-base/:api_version/:uuid/provider",
+			"/api/poc-api-base/:api_version/:uuid/providers",
 			get(provider),
 		)
 		.route("/health/liveness", get(health_check_handler))
