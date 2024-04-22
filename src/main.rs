@@ -39,6 +39,7 @@ pub async fn health_check_handler() -> impl IntoResponse {
 #[tokio::main]
 async fn main() {
 	let app = Router::new()
+		.route("/", get(index))
 		.route("/api/poc-api-base", get(index))
 		.route(
 			"/api/poc-api-base/:api_version/:uuid/screening",
