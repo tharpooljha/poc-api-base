@@ -1,6 +1,9 @@
 # Use the official Rust image as the base image
 FROM rust:latest
 
+# Install required packages
+RUN apt-get update && apt-get install -y curl tar gzip
+
 # Set the working directory inside the container
 WORKDIR /app
 
