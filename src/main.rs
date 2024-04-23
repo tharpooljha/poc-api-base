@@ -21,7 +21,8 @@ async fn provider(
 async fn index() -> Html<&'static str> {
 	Html(
 		"<h1>poc-api-base!</h1> \n <p>API for POC</p>\n   <p>Version 0.2.0</p>\n
-	<p>Test:</p>\n  <p><a href='/api/poc-api-base/v1/4e3cde86-37ea-48bb-adef-4f820ba70b0f/screening'>Test</p>\n",
+	<p>Test Screening:</p>\n  <p><a href='/api/poc-api-base/v1/4e3cde86-37ea-48bb-adef-4f820ba70b0f/screening'>Screening API</p>\n
+	<p>Test Providers:</p>\n  <p><a href='/api/poc-api-base/v1/4e3cde86-37ea-48bb-adef-4f820ba70b0f/providers'>Providers API</p>",
 	)
 }
 
@@ -39,7 +40,6 @@ pub async fn health_check_handler() -> impl IntoResponse {
 #[tokio::main]
 async fn main() {
 	let app = Router::new()
-		.route("/", get(index))
 		.route("/api/poc-api-base", get(index))
 		.route(
 			"/api/poc-api-base/:api_version/:uuid/screening",
